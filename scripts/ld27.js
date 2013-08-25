@@ -49,6 +49,9 @@ var gameMap = {
     },
 
     D1: {
+      messages: [
+        "This is a dead end, you will die here."
+      ],
       doors: []
     },
     D2: {
@@ -64,6 +67,9 @@ var gameMap = {
       doors: ["E3", "E4"]
     },
     D6: {
+      messages: [
+        "This is a dead end, you will die here."
+      ],
       doors: []
     },
 
@@ -71,22 +77,37 @@ var gameMap = {
       doors: ["F1", "F2"]
     },
     E2: {
+      messages: [
+        "This is a dead end, you will die here."
+      ],
       doors: []
     },
     E3: {
       doors: ["F2", "F3"]
     },
     E4: {
+      messages: [
+        "This is a dead end, you will die here."
+      ],
       doors: []
     },
 
     F1: {
+      messages: [
+        "This is the end. <br />It was all pointless to begin with."
+      ],
       doors: []
     },
     F2: {
+      messages: [
+        "This is the end. <br />It was all pointless to begin with."
+      ],
       doors: []
     },
     F3: {
+      messages: [
+        "This is the end. <br />It was all pointless to begin with."
+      ],
       doors: []
     },
   }

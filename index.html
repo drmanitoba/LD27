@@ -4,21 +4,29 @@
 <head>
   <title>10 Seconds</title>
 
-  <link rel="stylesheet" type="text/css" href="/styles/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="/styles/screen.css" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div id="main">
-    <div id="room">
-      <h1 id="roomName"></h1>
-      <ul id="doors">
-      </ul>
-    </div>
+  <div id="main" class="container">
+    <div class="row">
+      <div id="room" class="col-md-6 col-md-offset-3">
+        <h1 id="roomName"></h1>
+      </div>
 
-    <h2 id="timer"></h2>
+      <h2 id="timer" class="col-md-offset-4"></h2>
 
-    <div id="messages">
+      <div class="col-md-6 col-md-offset-3">
+        <ul id="doors">
+        </ul>
+      </div>
+
+      <div class="row">
+        <div id="messages" class="col-md-6 col-md-offset-3">
+        </div>
+      </div>
     </div>
   </div>
 

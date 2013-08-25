@@ -5,6 +5,7 @@ var RoomView = Class.extend({
     }
 
     this._$room = $("#room")
+    this._$doors = $("#doors")
     this._$timer = $("#timer")
   },
 
@@ -26,13 +27,15 @@ var RoomView = Class.extend({
 
   clear: function() {
     this._$room.hide()
+    this._$doors.hide()
   },
 
   render: function() {
     this._$room.show()
+    this._$doors.show()
 
     this._$room.find("#roomName").html(this._room.getName())
 
-    this._$room.find("#doors").html(this.getDoorList())
+    this._$doors.html(this.getDoorList())
   }
 })
