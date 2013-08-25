@@ -1,6 +1,7 @@
 var RoomManager = Class.extend({
   init: function(map) {
     this._map = map
+    this._messageIndex = 0
     this.goToFirstRoom()
   },
 
@@ -12,24 +13,34 @@ var RoomManager = Class.extend({
     return this._currentRoom
   },
 
-  getDoorList: function() {
-    var html = ""
-    var doors = this._currentRoom.getDoors()
-
-    for(var d in doors) {
-      var door = doors[d]
-
-      html += '<li class="door" data-target="' + door.getTarget() + '">' +
-              "To room " +
-              door.getTarget() +
-              '</li>\n'
-    }
-
-    return html
+  currentRoomName: function() {
+    return this._currentRoom.getName()
   },
 
-  goToRoom: function(room) {
-    this._currentRoom = this._map.getRoom(room)
+  currentRoomHasMessages: function() {
+    return this._currentRoom.hasMessages() && this._messageIndex <= this._currentRoom.getMessages().length - 1
+  },
+
+  nextMessage: function() {
+    if(this._messageIndex < this._currentRoom.getMessages().length) {
+      this._messageIndex = this._messageIndex + 1
+      return true
+    }
+
+    return false
+  },
+
+  getCurrentMessage: function() {
+    return this._currentRoom.getMessage(this._messageIndex)
+  },
+
+  goToRoom: function(roomID) {
+    if(this._currentRoom = this._map.getRoom(roomID)) {
+      this._messageIndex = 0
+      return true
+    }
+
+    return false
   }
 })
 

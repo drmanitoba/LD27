@@ -1,10 +1,25 @@
 var gameMap = {
   rooms: {
+    START: {
+      messages: [
+        "This is message number 1",
+        "This is message number 2",
+        "This is message number 3"
+      ],
+      doors: ["A1"]
+    },
+
     A1: {
       doors: ["B1", "B2", "B3"]
     },
 
     B1: {
+      messages: [
+        "B1 Message 1",
+        "B1 Message 2",
+        "B1 Messge 3",
+        "B1 Message 4"
+      ],
       doors: ["C1", "C2"]
     },
     B2: {
