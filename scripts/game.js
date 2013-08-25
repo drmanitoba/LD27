@@ -81,6 +81,7 @@ var Game = Class.extend({
     self._isAlive = false
     self._soundManager.stopSound(SoundManager.TICKING)
     self._soundManager.stopSound(SoundManager.POUNDING)
+    self._soundManager.stopSound(SoundManager.BGLOOP)
     self._soundManager.playSound(SoundManager.DEAD)
     self._gameView.render()
   },
@@ -129,6 +130,7 @@ var Game = Class.extend({
     this.bindNavigationEvents()
     $(document).trigger(NavigationEvent.ROOM_START)
     this._gameView.update()
+    this._soundManager.playSound(SoundManager.BGLOOP)
   }
 })
 

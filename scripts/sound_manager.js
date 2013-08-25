@@ -3,7 +3,8 @@ var SoundManager = Class.extend({
     this._sounds = {}
 
     this._sounds.bgLoop = new Howl({
-      urls: ["/res/bg-loop.mp3"]
+      urls: ["/res/bg-loop.mp3"],
+      volume: 0.6
     }).loop(true)
 
     this._sounds.ticking = new Howl({

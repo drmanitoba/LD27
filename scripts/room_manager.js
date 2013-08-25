@@ -42,6 +42,10 @@ var RoomManager = Class.extend({
     }
 
     return false
+  },
+
+  atDeadEnd: function() {
+    return this._currentRoom.isDeadEnd()
   }
 })
 

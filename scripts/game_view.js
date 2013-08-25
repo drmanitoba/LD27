@@ -25,10 +25,14 @@ var GameView = Class.extend({
           this._msgView.clear()
         }
 
-        var room = manager.currentRoom()
-        this._roomView = new RoomView(room)
+        if(!manager.atDeadEnd()) {
+          var room = manager.currentRoom()
+          this._roomView = new RoomView(room)
 
-        this._roomView.render()
+          this._roomView.render()
+        } else {
+          $(document).trigger(GameEvent.DEAD)
+        }
       }
     } else {
       $("#main").html('<h1>You Dead.</h1>')

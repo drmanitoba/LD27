@@ -36,6 +36,9 @@ var gameMap = {
       doors: ["C1", "D3"]
     },
     C3: {
+      messages: [
+        "This is a dead end, you will die here."
+      ],
       doors: []
     },
     C4: {
