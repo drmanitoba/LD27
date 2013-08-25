@@ -39,9 +39,14 @@ var Game = Class.extend({
   onRoomStart: function(e) {
     var self = e.data.self
 
-    self._soundManager.stopSound(SoundManager.TICKING)
-    self._soundManager.playSound(SoundManager.TICKING)
     //Probably also want to start the timer here
+    self._soundManager.stopSound(SoundManager.TICKING)
+    self._soundManager.stopSound(SoundManager.POUNDING)
+    self._soundManager.playSound(SoundManager.TICKING)
+    self._soundManager.playSound(SoundManager.POUNDING)
+
+    self._clock.reset()
+    self._clock.start()
   },
 
   onRoomNavigate: function(e) {
@@ -54,6 +59,7 @@ var Game = Class.extend({
     var self = e.data.self
 
     self._soundManager.stopSound(SoundManager.TICKING)
+    self._soundManager.stopSound(SoundManager.POUNDING)
   },
 
   onMsgNavigate: function(e) {
@@ -66,6 +72,16 @@ var Game = Class.extend({
     var self = e.data.self
 
     self._gameView.update()
+  },
+
+  onDie: function(e) {
+    var self = e.data.self
+
+    self._isAlive = false
+    self._soundManager.stopSound(SoundManager.TICKING)
+    self._soundManager.stopSound(SoundManager.POUNDING)
+    self._soundManager.playSound(SoundManager.DEAD)
+    self._gameView.render()
   },
 
   bindNavigationEvents: function() {
@@ -86,18 +102,32 @@ var Game = Class.extend({
     $(document).off(NavigationEvent.MSG_END)
   },
 
+  bindGameEvents: function() {
+    $(document).on(GameEvent.DEAD, {self: this}, this.onDie)
+  },
+
   getRoomManager: function() {
     return this._roomManager
   },
 
+  alive: function() {
+    return this._isAlive
+  },
+
   run: function() {
+    this._isAlive = true
     this._map = new Map()
     this.buildMap()
     this._roomManager = new RoomManager(this._map)
     this._navigator = new Navigator(this._roomManager)
     this._soundManager = new SoundManager()
     this._gameView = new GameView(this)
+    this._clock = new Clock()
 
+    this.bindGameEvents()
     this._gameView.update()
   }
 })
+
+var GameEvent = {}
+GameEvent.DEAD = "dead_event"

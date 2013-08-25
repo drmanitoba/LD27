@@ -7,7 +7,16 @@ var SoundManager = Class.extend({
     }).loop(true)
 
     this._sounds.ticking = new Howl({
-      urls: ["/res/clock.mp3"]
+      urls: ["/res/clock.mp3"],
+      volume: 0.4
+    })
+
+    this._sounds.pounding = new Howl({
+      urls: ["/res/pounding.mp3"]
+    })
+
+    this._sounds.dead = new Howl({
+      urls: ["/res/dead.mp3"]
     })
   },
 
@@ -24,3 +33,5 @@ var SoundManager = Class.extend({
 
 SoundManager.BGLOOP = "bgLoop"
 SoundManager.TICKING = "ticking"
+SoundManager.POUNDING = "pounding"
+SoundManager.DEAD = "dead"
