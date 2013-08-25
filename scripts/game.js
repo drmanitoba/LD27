@@ -83,6 +83,7 @@ var Game = Class.extend({
     self._soundManager.stopSound(SoundManager.POUNDING)
     self._soundManager.stopSound(SoundManager.BGLOOP)
     self._soundManager.playSound(SoundManager.DEAD)
+    self._clock.reset()
     self._gameView.render()
   },
 
