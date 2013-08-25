@@ -1,6 +1,7 @@
 var GameView = Class.extend({
   init: function(game) {
     this._game = game
+    this._$title = $("#roomName")
     $("#timer").hide()
   },
 
@@ -9,6 +10,8 @@ var GameView = Class.extend({
     var manager = game.getRoomManager()
 
     if(game.alive()) {
+      this._$title.html(manager.currentRoom().getName())
+
       // If we have messages, show those first
       if(manager.currentRoomHasMessages()) {
         if(this._roomView) {

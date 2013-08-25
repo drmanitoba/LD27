@@ -7,7 +7,8 @@ var Game = Class.extend({
     // Iterate over rooms
     var rooms = this._mapData["rooms"]
     for(var r in rooms) {
-      var room = new Room(r)
+      var roomData = rooms[r]
+      var room = new Room(r, roomData)
       var doors = rooms[r]["doors"]
       var messages = rooms[r]["messages"] || []
 
@@ -88,8 +89,8 @@ var Game = Class.extend({
   },
 
   bindNavigationEvents: function() {
-    $("li.door").on("click", {self: this._navigator}, this._navigator.doorNav)
-    $("span.msg-nav").on("click", {self: this._navigator}, this._navigator.msgNav)
+    $(".door").on("click", {self: this._navigator}, this._navigator.doorNav)
+    $(".msg-nav").on("click", {self: this._navigator}, this._navigator.msgNav)
     $(document).on(NavigationEvent.ROOM_START, {self: this}, this.onRoomStart)
     $(document).on(NavigationEvent.ROOM_NAV, {self: this}, this.onRoomNavigate)
     $(document).on(NavigationEvent.MSG_START, {self: this}, this.onMsgStart)

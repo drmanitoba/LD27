@@ -1,9 +1,10 @@
 var Room = Class.extend({
-  init: function(id) {
+  init: function(id, data) {
+    console.log(data)
     this._id = id
     this._doors = []
     this._messages = []
-    this._name = "Room " + id
+    this._name = data.name
   },
 
   addDoor: function(door) {

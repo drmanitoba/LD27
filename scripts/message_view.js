@@ -10,8 +10,10 @@ var MessageView = Class.extend({
   render: function() {
     var html = ""
 
-    html += '<p class="msg">' + this._message.getText() + '</p>'
-    html += '<span class="msg-nav">Next &rarr;</span>'
+    html += '<blockquote>' +
+    '<p>' + this._message.getText() + '</p>' +
+    '<small class="msg-nav">Next &rarr;</small>' +
+    '</blockquote>'
 
     this._$messages.html(html).show()
   },

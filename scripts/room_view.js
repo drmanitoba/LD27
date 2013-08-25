@@ -33,8 +33,6 @@ var RoomView = Class.extend({
     this._$room.show()
     this._$doors.show()
 
-    this._$room.find("#roomName").html(this._room.getName())
-
     this._$doors.html(this.getDoorList())
   }
 })

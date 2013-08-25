@@ -1,3 +1,8 @@
 body {
   background: #FDE555
 }
+
+#doors li,
+.msg-nav {
+  cursor: pointer;
+}
