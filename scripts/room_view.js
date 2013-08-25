@@ -17,8 +17,7 @@ var RoomView = Class.extend({
       var door = doors[d]
 
       html += '<li class="door" data-target="' + door.getTarget() + '">' +
-              "To room " +
-              door.getTarget() +
+              door.getClue() + 
               '</li>\n'
     }
 

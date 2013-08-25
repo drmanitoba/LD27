@@ -14,8 +14,8 @@ var Game = Class.extend({
       // Add doors if we have any
       if(doors.length > 0) {
         for(var d in doors) {
-          var target = doors[d]
-          var door = new Door(target)
+          var doorData = doors[d]
+          var door = new Door(doorData)
           room.addDoor(door)
         }
       } else {
@@ -100,7 +100,9 @@ var Game = Class.extend({
   unbindNavigationEvents: function() {
     $("li.door").off("click")
     $("span.msg-nav").off("click")
+    $(document).off(NavigationEvent.ROOM_START)
     $(document).off(NavigationEvent.ROOM_NAV)
+    $(document).off(NavigationEvent.MSG_START)
     $(document).off(NavigationEvent.MSG_NAV)
     $(document).off(NavigationEvent.MSG_END)
   },
