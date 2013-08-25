@@ -37,6 +37,7 @@ var RoomManager = Class.extend({
   goToRoom: function(roomID) {
     if(this._currentRoom = this._map.getRoom(roomID)) {
       this._messageIndex = 0
+
       return true
     }
 

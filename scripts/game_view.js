@@ -1,6 +1,7 @@
 var GameView = Class.extend({
   init: function(game) {
     this._game = game
+    $("#timer").hide()
   },
 
   render: function() {
@@ -27,7 +28,6 @@ var GameView = Class.extend({
         var room = manager.currentRoom()
         this._roomView = new RoomView(room)
 
-        $(document).trigger(NavigationEvent.ROOM_START)
         this._roomView.render()
       }
     } else {

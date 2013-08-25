@@ -40,6 +40,16 @@ var Game = Class.extend({
     var self = e.data.self
 
     //Probably also want to start the timer here
+    self._soundManager.playSound(SoundManager.TICKING)
+    self._soundManager.playSound(SoundManager.POUNDING)
+
+    self._clock.start()
+  },
+
+  onRoomNavigate: function(e) {
+    var self = e.data.self
+
+    self._gameView.update()
     self._soundManager.stopSound(SoundManager.TICKING)
     self._soundManager.stopSound(SoundManager.POUNDING)
     self._soundManager.playSound(SoundManager.TICKING)
@@ -49,17 +59,8 @@ var Game = Class.extend({
     self._clock.start()
   },
 
-  onRoomNavigate: function(e) {
-    var self = e.data.self
-
-    self._gameView.update()
-  },
-
   onMsgStart: function(e) {
     var self = e.data.self
-
-    self._soundManager.stopSound(SoundManager.TICKING)
-    self._soundManager.stopSound(SoundManager.POUNDING)
   },
 
   onMsgNavigate: function(e) {
@@ -125,6 +126,8 @@ var Game = Class.extend({
     this._clock = new Clock()
 
     this.bindGameEvents()
+    this.bindNavigationEvents()
+    $(document).trigger(NavigationEvent.ROOM_START)
     this._gameView.update()
   }
 })

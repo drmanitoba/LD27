@@ -1,12 +1,14 @@
 var Clock = Class.extend({
   init: function() {
     this._timer = new Timer(1000)
+    this._$timer = $("#timer")
     this._currentTick = 0
     this._timer.addEventListener(TimerEvent.TIMER, this.tick.bind(this))
   },
 
   start: function() {
     this._timer.start()
+    this._$timer.html(Clock.MAX).show()
   },
 
   reset: function() {
@@ -17,7 +19,7 @@ var Clock = Class.extend({
 
   tick: function(self, e) {
     if(this._currentTick <= Clock.MAX) {
-      console.log(this._currentTick)
+      this._$timer.html((Clock.MAX - 1) - this._currentTick)
       this._currentTick = this._currentTick + 1
     }
 

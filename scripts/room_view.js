@@ -5,6 +5,7 @@ var RoomView = Class.extend({
     }
 
     this._$room = $("#room")
+    this._$timer = $("#timer")
   },
 
   getDoorList: function() {
